@@ -17,8 +17,8 @@ $ cd Devops_scripting/
 ## Pre Environment setup
 
 - Python3 & pip3 is pre-installed
-- [IAM](https://console.aws.amazon.com/iam/home?region=us-east-2#/users) user in AWS with access keys details programmatic user with access keys to configure aws-cli.
-- IAM role "myFirstEC2role" thats has *AmazonEC2ReadOnlyAccess* policy attached, which we will assign it to EC2 instance to acquire temporary credentials so that boto/aws-cli can fetch results.
+- Creating [IAM](https://console.aws.amazon.com/iam/home?region=us-east-2#/users) user in AWS with access keys details programmatic user with access keys to configure aws-cli.
+- Creatig IAM role "myFirstEC2role" thats has *AmazonEC2ReadOnlyAccess* policy attached, which we will assign it to EC2 instance to acquire temporary credentials so that boto/aws-cli can fetch results.
 
 #### Installing awscli ansible boto boto3 with pip
 ```bash
