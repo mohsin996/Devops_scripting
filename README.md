@@ -97,10 +97,10 @@ Last login: Wed Aug  5 04:48:02 2020 from
        __|  __|_  )
        _|  (     /   Amazon Linux 2 AMI
       ___|\___|___|
-
 https://aws.amazon.com/amazon-linux-2/
+
 [ec2-user@ip-172-31-9-11 ~]$ python3 list_instances.py
 Instance #1, t2.micro
 ```
 # License
-[Apache](https://choosealicense.com/licenses/mit/)
+[Apache]
