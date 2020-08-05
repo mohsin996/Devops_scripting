@@ -92,6 +92,7 @@ Directory Structure
 ├── Python-Script
 │   └── list_instances.py
 ```
+```bash
 $ cat ansible.cfg
 [defaults]
 host_key_checking = False
