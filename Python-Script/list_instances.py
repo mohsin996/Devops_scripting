@@ -13,8 +13,8 @@ if len(sys.argv) > 2:
 #if region is None:
 #    print ("Please add a region or set the EC2REGION environment variable.")
 #    sys.exit(1)
-region='us-east-2'
-ec2 = boto3.resource('ec2',region)
+#region='us-east-2'
+ec2 = boto3.resource('ec2')
 for instance in ec2.instances.all():
     mylist.append(
             "{0}".format(instance.instance_type)
