@@ -103,4 +103,4 @@ https://aws.amazon.com/amazon-linux-2/
 Instance #1, t2.micro
 ```
 # License
-[MIT](https://choosealicense.com/licenses/mit/)
+[Apache](https://choosealicense.com/licenses/mit/)
