@@ -9,7 +9,7 @@
     key_name: my_aws
     region: us-east-2
     iam_role: myFirstEC2role
-    image: ami-05655c267c89566dd # https://cloud-images.ubuntu.com/locator/ec2/ami-07c8bc5c1ce9598c3
+    image: ami-07c8bc5c1ce9598c3
     id: "my-server"
     sec_group: "{{ id }}-sec"
 
