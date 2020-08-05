@@ -1,18 +1,32 @@
 # Devops_scripting
 
-This repositpory contains Ad-hoc Python and Ansible Scripts
+This repositpory contains Python script to list EC2 instances with boto3  and Ansible Script to provision EC2 instance
 
-## Installations for Locally running Python script
-Pre Assumption 
+## Cloning the repository
+```bash
+$ git clone https://github.com/mohsin996/Devops_scripting.git
+Cloning into 'Devops_scripting'...
+remote: Enumerating objects: 23, done.
+remote: Counting objects: 100% (23/23), done.
+remote: Compressing objects: 100% (19/19), done.
+remote: Total 23 (delta 3), reused 9 (delta 0), pack-reused 0
+Unpacking objects: 100% (23/23), done.
+
+$ cd Devops_scripting/
+```
+## Pre Environment setup
+
 - Python3 & pip3 is pre-installed
 - [IAM](https://console.aws.amazon.com/iam/home?region=us-east-2#/users) user in AWS with access keys details programmatic user with access keys to configure aws-cli.
-- Default AWS region is hard coded as `us-east-2`, can be made user input value later
+- IAM role "myFirstEC2role" thats has *AmazonEC2ReadOnlyAccess* policy attached, which we will assign it to EC2 instance to acquire temporary credentials so that boto/aws-cli can fetch results.
+
+#### Installing awscli ansible boto boto3 with pip
 ```bash
 $ python --version
 Python 3.8.0
 $ pip install awscli ansible boto boto3
 ```
-#### aws-cli configurations.
+#### configuring aws-cli 
 ```bash
 $ aws configure
 AWS Access Key ID [******************XX]:
@@ -20,7 +34,8 @@ AWS Secret Access Key [*****************XX]:
 Default region name [us-east-2]:
 Default output format [table]:
 ```
-#### Running script list_instances.py.
+### Running python script list_instances.py.
+#### without Parameters
 ```bash
 $ python list_instances.py
 Instance #1, t2.small
@@ -29,6 +44,7 @@ Instance #3, t2.medium
 Instance #4, t2.medium
 Instance #5, t2.large
 ```
+#### with Parameters
 ```
 $ python list_instances.py 't2.medium'
 Instance #3, t2.medium
@@ -36,7 +52,7 @@ Instance #4, t2.medium
 ```
 ## Provisioning EC2 instance by Ansible playbook
 
-Pre-Assumption:- Working Ansible setup
+Making Ansible ready to work with AWS APIs
 ```bash
 $ ansible --version
 ansible 2.9.11
@@ -44,17 +60,17 @@ ansible 2.9.11
 Creating config file, keys and directory structure
 ```bash
  $ ssh-keygen -t rsa -b 4096 -f ~/.ssh/my_aws
- $ mkdir -p Ansible-playbook/group_vars/all/
+ $ pwd
+  Devops_scripting/
  $ cd Ansible-playbook/
- $ touch playbook.yml
+
 ```
-Give login password to vault 
+Create a ansible-vault to store AWS keys
 ```bash
  $ ansible-vault create group_vars/all/awspass.yml
  New Vault password:
  Confirm New Vault password:
 ```
-Copy the keys in the vault file 
 ```
 $ ansible-vault edit group_vars/all/awspass.yml
 ec2_access_key: ******************
@@ -62,20 +78,26 @@ ec2_secret_key: **************************
 ```
 Directory Structure
 ```
-├── Ansible-playbook
-│   ├── ansible.cfg
-│   ├── group_vars
-│   │   └── all
-│   │       └── awspass.yml
-│   └── playbook.yml
-```
+├── Devops_scripting
+│   ├── Ansible-playbook
+│   │   ├── ansible.cfg
+│   │   ├── group_vars
+│   │   │   └── all
+│   │   │       └── awspass.yml
+│   │   └── playbook.yml
+│   ├── LICENSE
+│   ├── Python-Script
+│   │   └── list_instances.py
+│   └── README.md
+├── Python-Script
+│   └── list_instances.py
 ```
 $ cat ansible.cfg
 [defaults]
 host_key_checking = False
-private_key_file = /Users/mkhan345/.ssh/my_aws
+private_key_file = ~/.ssh/my_aws
 ```
-#### Running the playbook now
+#### Running the playbook now 
 ```
 $ ansible-playbook playbook.yml --ask-vault-pass
 ```
