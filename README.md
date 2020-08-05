@@ -36,6 +36,7 @@ Default output format [table]:
 ### Running python script list_instances.py.
 #### without Parameters
 ```bash
+$ cd Python-Script/
 $ python list_instances.py
 Instance #1, t2.small
 Instance #2, t2.small
@@ -59,7 +60,7 @@ ansible 2.9.11
 Creating config key file and directory structure
 ```bash
  $ ssh-keygen -t rsa -b 4096 -f ~/.ssh/my_aws
- $ cd Ansible-playbook/
+ $ cd ../Ansible-playbook/
  $ mkdir -p group_vars/all/
 ```
 Creating a ansible-vault to store AWS keys, this is same user we used before in running script locally
