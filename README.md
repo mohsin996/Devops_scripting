@@ -51,7 +51,7 @@ Instance #4, t2.medium
 ```
 ## Provisioning EC2 instance by Ansible playbook
 
-Making Ansible ready to work with AWS APIs
+### Making Ansible ready to work with AWS APIs
 ```bash
 $ ansible --version
 ansible 2.9.11
@@ -89,7 +89,7 @@ $ cat ansible.cfg
 host_key_checking = False
 private_key_file = ~/.ssh/my_aws
 ```
-#### Running the playbook now 
+### Running the playbook now 
 ```
 $ ansible-playbook playbook.yml --ask-vault-pass
 ```
