@@ -57,40 +57,32 @@ Making Ansible ready to work with AWS APIs
 $ ansible --version
 ansible 2.9.11
 ```
-Creating config file, keys and directory structure
+Creating config key file and directory structure
 ```bash
  $ ssh-keygen -t rsa -b 4096 -f ~/.ssh/my_aws
- $ pwd
-  Devops_scripting/
  $ cd Ansible-playbook/
-
+ $ mkdir -p group_vars/all/
 ```
-Create a ansible-vault to store AWS keys
+Creating a ansible-vault to store AWS keys, this is same user we used before in running script locally
 ```bash
  $ ansible-vault create group_vars/all/awspass.yml
  New Vault password:
  Confirm New Vault password:
 ```
+vault should have two enteries `ec2_access_key` & `ec2_secret_key`
 ```
 $ ansible-vault edit group_vars/all/awspass.yml
 ec2_access_key: ******************
 ec2_secret_key: **************************
 ```
-Directory Structure
+Ansible Directory Structure will look like
 ```
-├── Devops_scripting
-│   ├── Ansible-playbook
-│   │   ├── ansible.cfg
-│   │   ├── group_vars
-│   │   │   └── all
-│   │   │       └── awspass.yml
-│   │   └── playbook.yml
-│   ├── LICENSE
-│   ├── Python-Script
-│   │   └── list_instances.py
-│   └── README.md
-├── Python-Script
-│   └── list_instances.py
+├── Ansible-playbook
+│   ├── ansible.cfg
+│   ├── group_vars
+│   │   └── all
+│   │       └── awspass.yml
+│   └── playbook.yml
 ```
 ```bash
 $ cat ansible.cfg
