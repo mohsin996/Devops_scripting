@@ -11,7 +11,6 @@ remote: Counting objects: 100% (23/23), done.
 remote: Compressing objects: 100% (19/19), done.
 remote: Total 23 (delta 3), reused 9 (delta 0), pack-reused 0
 Unpacking objects: 100% (23/23), done.
-```bash
 $ cd Devops_scripting/
 ```
 ## Pre Environment setup
