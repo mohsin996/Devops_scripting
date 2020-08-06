@@ -69,7 +69,7 @@ Creating a ansible-vault to store AWS keys, this is same user we used before in 
  New Vault password:
  Confirm New Vault password:
 ```
-vault should have two enteries `ec2_access_key` & `ec2_secret_key`
+vault should have two key enteries `ec2_access_key` & `ec2_secret_key`
 ```
 $ ansible-vault edit group_vars/all/awspass.yml
 ec2_access_key: ******************
@@ -99,11 +99,12 @@ PLAY RECAP *********************************************************************
 50.18.240.116              : ok=3    changed=2
 localhost                  : ok=6    changed=1
 ```
-Copying the script to EC2 server
+Copying the script to EC2 server ( replace the dns hostname of your ec2 server)
 ```bash
 scp -p -i ~/.ssh/my_aws list_instances.py ec2-user@ec2-50-18-240-116.us-west-1.compute.amazonaws.com:
 ```
 ### Running the python script in EC2 instance
+Note: we are using python3 in ec2 instance
 ```bash
 
 $ ssh ec2-user@ec2-50-18-240-116.us-west-1.compute.amazonaws.com -i ~/.ssh/my_aws
