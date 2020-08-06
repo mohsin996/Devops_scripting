@@ -2,7 +2,7 @@ import boto3
 import sys
 import os
 mylist = []
-
+region='us-east-2'
 #Checking with the default list to test list operation
 #mylist = ['t2.small', 't2.small','t2.medium','t2.medium','t2.large']
 
@@ -12,7 +12,7 @@ if len(sys.argv) > 2:
     sys.exit(1)
 
 #Boto Script to fetch details about EC2 with default region configured with aws configure
-ec2 = boto3.resource('ec2')
+ec2 = boto3.resource('ec2',region)
 for instance in ec2.instances.all():
     mylist.append(
             "{0}".format(instance.instance_type)
